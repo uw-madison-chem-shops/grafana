@@ -1,0 +1,11 @@
+version: '3.3'
+
+services:
+  grafana:
+    build: ./grafana
+    ports:
+      - 3000:3000
+    environment:
+      - GF_AUTH_LDAP_ENABLED=true
+      - GF_AUTH_LDAP_CONFIG_FILE=/etc/grafana/ldap.toml
+      - GF_AUTH_LDAP_ALLOW_SIGN_UP=false

@@ -1,0 +1,3 @@
+FROM grafana/grafana:7.3.0
+
+COPY ./ldap.toml /etc/grafana/ldap.toml
