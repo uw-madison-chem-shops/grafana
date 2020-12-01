@@ -4,11 +4,13 @@ services:
   grafana:
     image: grafana/grafana:7.3.0
     restart: unless-stopped
-    ports:
-      - 3000:3000
     volumes:
       - ./ldap.toml:/etc/grafana/ldap.toml
+      - grafana:/var/lib/grafana/
     environment:
       - GF_AUTH_LDAP_ENABLED=true
       - GF_AUTH_LDAP_CONFIG_FILE=/etc/grafana/ldap.toml
       - GF_AUTH_LDAP_ALLOW_SIGN_UP=true
+
+volumes:
+  grafana:
