@@ -33,37 +33,23 @@ search_base_dns = ["ou=people,ou=core,dc=chem,dc=wisc,dc=edu"]
 
 ## For Posix or LDAP setups that does not support member_of attribute you can define the below settings
 ## Please check grafana LDAP docs for examples
-# group_search_filter = "(&(objectClass=posixGroup)(memberUid=%s))"
-# group_search_base_dns = ["ou=groups,dc=grafana,dc=org"]
-# group_search_filter_user_attribute = "uid"
+group_search_filter = "(&(objectClass=posixGroup)(memberUid=%s))"
+#group_search_base_dns = ["ou=groups,dc=grafana,dc=org"]
+group_search_filter_user_attribute = "memberUid"
 
-
-# Specify names of the ldap attributes your ldap uses
 [servers.attributes]
 name = "givenName"
 surname = "sn"
 firstname = "cn"
 username = "uid"
-member_of = "memberOf"
+member_of = "memberUid"
 email =  "mail"
 
-
-# Map ldap groups to grafana org roles
 [[servers.group_mappings]]
 group_dn = "cn=grafana_admin,ou=Groups,ou=core,dc=chem,dc=wisc,dc=edu"
 org_role = "Admin"
-# To make user an instance admin  (Grafana Admin) uncomment line below
-# grafana_admin = true
-# The Grafana organization database id, optional, if left out the default org (id 1) will be used
-# org_id = 1
-
+grafana_admin = true
 
 [[servers.group_mappings]]
-group_dn = "cn=users,ou=groups,dc=grafana,dc=org"
-org_role = "Editor"
-
-
-[[servers.group_mappings]]
-# If you want to match all (or no ldap groups) then you can use wildcard
 group_dn = "*"
-org_role = "Viewer"
+org_role = "Editor"
