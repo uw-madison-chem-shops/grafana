@@ -1,11 +1,12 @@
 apiVersion: 1
 
 datasources:
-  - name: mqtt-chem
+  - name: homie
     type: influxdb
     access: proxy
     database: homie
     url: mqtt.chem.wisc.edu:8086
+    user: user
+    isDefault: true
     secureJsonData:
-      user: user
       password: xtssxgxy
