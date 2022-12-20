@@ -4,9 +4,14 @@ datasources:
   - name: homie
     type: influxdb
     access: proxy
-    database: homie
-    url: mqtt.chem.wisc.edu:8086
-    user: user
+    url: http://grafana.chem.wisc.edu:8086
     isDefault: true
+    jsonData:
+      version: Flux
+      httpMode: POST
+      defaultBucket: homie
+      tlsSkipVerify: true
+      organization: 8f31118a32d088bc
     secureJsonData:
-      password: xtssxgxy
+      token: "rcsgYG6wjKBPNL9zDQn-baqBRoS86sbAhA_zNardFnMn08WB3AIeBqT6UHQBmFvIB65FefEy4nN9oZSkjCwxmQ=="
+

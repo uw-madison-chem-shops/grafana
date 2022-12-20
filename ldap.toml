@@ -28,25 +28,25 @@ search_filter = "(uid=%s)"
 
 
 # An array of base dns to search through
-search_base_dns = ["ou=people,ou=core,dc=chem,dc=wisc,dc=edu"]
+search_base_dns = ["ou=core,dc=chem,dc=wisc,dc=edu"]
 
 
 ## For Posix or LDAP setups that does not support member_of attribute you can define the below settings
 ## Please check grafana LDAP docs for examples
 group_search_filter = "(&(objectClass=posixGroup)(memberUid=%s))"
-#group_search_base_dns = ["ou=groups,dc=grafana,dc=org"]
-group_search_filter_user_attribute = "memberUid"
+group_search_base_dns = ["ou=core,dc=chem,dc=wisc,dc=edu"]
+group_search_filter_user_attribute = "uid"
 
 [servers.attributes]
 name = "givenName"
 surname = "sn"
 firstname = "cn"
 username = "uid"
-member_of = "memberUid"
+member_of = "cn"
 email =  "mail"
 
 [[servers.group_mappings]]
-group_dn = "cn=grafana_admin,ou=Groups,ou=core,dc=chem,dc=wisc,dc=edu"
+group_dn = "grafana_admin"
 org_role = "Admin"
 grafana_admin = true
 
